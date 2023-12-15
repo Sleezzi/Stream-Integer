@@ -1,6 +1,7 @@
 const bannedWord = [
     "<",
     ">",
+    "http"
 ];
 
 const badges = {
@@ -32,9 +33,21 @@ client.on("clearchat", () => {
     document.querySelector("#chat > #messageContainer").innerHTML = "";
 });
 
+client.on("submysterygift", (channel, tags, methods) => {
+    for (word of bannedWord) if (tags.username.toLowerCase().includes(word)) tags.username = message.toLowerCase().replace(word, ".".repeat(word.length));
+    const speak = new SpeechSynthesisUtterance(tags.username);
+    window.speechSynthesis.speak(speak);
+});
+
 client.on("message", (channel, tags, message, self) => {
-    console.log(Object.keys(tags.badges));
-    if ((message === "!clear" || message === "!cls") && (tags.mod || (tags.badges && tags.badges.brodcaster !== null))) return document.querySelector("#chat > #messageContainer").innerHTML = "";
+    const isMod = tags.mod  || (tags.badges && tags.badges.brodcaster !== null)
+    if ((message === "!clear" || message === "!cls") && isMod) return document.querySelector("#chat > #messageContainer").innerHTML = "";
+    if (message.startsWith("!say") && isMod) {
+        const speak = new SpeechSynthesisUtterance(message.split("!say ")[1]);
+        window.speechSynthesis.speak(speak);
+        return;
+    }
+
     for (word of bannedWord) if (message.toLowerCase().includes(word)) message = message.toLowerCase().replace(word, "#".repeat(word.length));
     const messageContainer = document.createElement("div");
     messageContainer.className = "message";
