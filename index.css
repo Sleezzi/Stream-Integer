@@ -1,0 +1,12 @@
+body {
+    height: 1080px;
+    width: 1920px;
+    margin: 0;
+}
+
+#background {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    background: url("./renderRoom.png") center/cover no-repeat;
+}
