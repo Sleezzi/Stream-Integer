@@ -26,7 +26,7 @@ const client = new tmi.Client({
 	channels: [ "Sleezzi" ]
 });
 const setDate = () => {
-    document.querySelector("#compteur").innerHTML = `${(new Date().getHours() > 9 ? new Date().getHours() : `0${new Date().getHours()}`)}:${(new Date().getMinutes() > 9 ? new Date().getMinutes() : `0${new Date().getMinutes()}`)}`;
+    document.querySelector("#compteur").innerText = `${(new Date().getHours() > 9 ? new Date().getHours() : `0${new Date().getHours()}`)}:${(new Date().getMinutes() > 9 ? new Date().getMinutes() : `0${new Date().getMinutes()}`)}`;
 }
 
 client.on("clearchat", () => {
@@ -65,4 +65,4 @@ client.on("message", (channel, tags, message, self) => {
 setDate();
 setInterval(setDate, 30_000);
 
-client.connect().catch(err => console.error(err));
+client.connect().then(() => document.querySelector("#await").classList.remove("active")).catch(err => console.error(err));

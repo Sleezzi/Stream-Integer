@@ -5,10 +5,32 @@ body {
     height: 1080px;
     width: 1920px;
     margin: 0;
-    background: url("img/renderRoom.png") center/cover no-repeat;
+    /* background: url("img/renderRoom.png") center/cover no-repeat; */
 }
 
-#compteur {
+body > img {
+    height: 100%;
+    width: 100%;
+    position: relative;
+}
+
+#await.active {
+    height: 100%;
+    width: 100%;
+    background: black;
+    position: fixed;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: xx-large;
+    top: 0;
+}
+#await {
+    display: none;
+}
+
+/* #compteur {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -17,9 +39,27 @@ body {
     font-size: 2vw;
     color: white;
     font-family: 'Silkscreen', sans-serif;
-    position: relative;
+    position: fixed;
     top: 23.3%;
     left: 20%;
+    transform: skewY(335deg) skewX(15deg) rotateZ(20deg);
+    filter: blur(0.04vw);
+    text-shadow: 0 0 1vw #00a6ffa3, 0 0 1.2vw #FFFFFF8a;
+} */
+
+#compteur {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 221px;
+    width: 212px;
+    font-size: 50px;
+    color: white;
+    font-family: 'Silkscreen', sans-serif;
+    position: fixed;
+    top: 250px;
+    left: 420px;
+    background: blue;
     transform: skewY(335deg) skewX(15deg) rotateZ(20deg);
     filter: blur(0.04vw);
     text-shadow: 0 0 1vw #00a6ffa3, 0 0 1.2vw #FFFFFF8a;
@@ -29,15 +69,15 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 6vw;
-    width: 10.5vw;
-    font-size: 2vw;
+    height: 115px;
+    width: 200px;
+    font-size: 50px;
     color: white;
     text-align: center;
     font-family: 'Bebas Neue', sans-serif;
-    position: relative;
-    top: 20.2%;
-    left: 54.6%;
+    position: absolute;
+    top: 445px;
+    left: 1068px;
     transform: skewY(7deg) skewX(351deg) rotateZ(356deg);
     filter: blur(0.04vw);
     text-shadow: 0 0 1vw #00a6ffa3, 0 0 1.2vw #FFFFFF8a;
@@ -47,11 +87,11 @@ body {
     display: flex;
     justify-content: start;
     align-items: end;
-    height: 13vw;
-    width: 4.8vw;
-    position: relative;
-    top: 5%;
-    left: 69%;
+    height: 250px;
+    width: 92px;
+    position: fixed;
+    top: 392px;
+    left: 1343px;
     color: white;
     transform: skewY(24deg) skewX(335deg) rotateZ(342deg);
     filter: blur(0.04vw);
