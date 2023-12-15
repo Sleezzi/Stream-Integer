@@ -42,18 +42,17 @@ client.on("submysterygift", (channel, tags, methods) => {
 client.on("message", (channel, tags, message, self) => {
     const isMod = tags.mod  || (tags.badges && tags.badges.brodcaster !== null)
     if ((message === "!clear" || message === "!cls") && isMod) return document.querySelector("#chat > #messageContainer").innerHTML = "";
+    for (word of bannedWord) if (message.toLowerCase().includes(word)) message = message.toLowerCase().replace(word, "#".repeat(word.length));
     if (message.startsWith("!say") && isMod) {
         const speak = new SpeechSynthesisUtterance(message.split("!say ")[1]);
         window.speechSynthesis.speak(speak);
         return;
     }
-
-    for (word of bannedWord) if (message.toLowerCase().includes(word)) message = message.toLowerCase().replace(word, "#".repeat(word.length));
     const messageContainer = document.createElement("div");
     messageContainer.className = "message";
     messageContainer.innerHTML = `
 <div class="author">
-    ${Object.keys(tags.badges).map(badge => (badge && badges[badge] ? `<img src="${badges[badge]}"></img>` : ""))}
+    <div class="badges">${Object.keys(tags.badges).map(badge => (badge && badges[badge] ? `<img src="${badges[badge]}"></img>` : ""))}</div>
     <${(tags.mod || tags.subscriber ? "strong" : "span")} style="color: ${tags.color};">${tags.username}:</${(tags.mod || tags.subscriber ? "strong" : "span")}>
 </div>
 <div class="content">

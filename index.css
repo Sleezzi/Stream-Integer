@@ -56,7 +56,7 @@ body > img {
     font-size: 50px;
     color: white;
     font-family: 'Silkscreen', sans-serif;
-    position: fixed;
+    position: absolute;
     top: 250px;
     left: 420px;
     background: blue;
@@ -89,9 +89,9 @@ body > img {
     align-items: end;
     height: 250px;
     width: 92px;
-    position: fixed;
-    top: 392px;
-    left: 1343px;
+    position: absolute;
+    top: 390px;
+    left: 1347px;
     color: white;
     transform: skewY(24deg) skewX(335deg) rotateZ(342deg);
     filter: blur(0.04vw);
@@ -113,10 +113,14 @@ body > img {
     font-size: xx-small;
 }
 
+#chat > #messageContainer > .message > .author > .badges {
+    display: flex;
+    margin-right: 3px;
+}
+
 #chat > #messageContainer > .message img {
     height: 7px;
     width: 7px;
-    margin-right: 3px;
 }
 
 #chat > #messageContainer > .message > .author {
